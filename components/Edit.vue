@@ -61,7 +61,7 @@
 import Modal from '~/components/Modal.vue'
 
 export default {
-  name: 'EditCategoryModal',
+  name: 'EditModal',
   components: { Modal },
   props: {
     id: {
@@ -89,11 +89,12 @@ export default {
     }
   },
   methods: {
-    updateCategory ({ name, description }) {
+    updateCategory ({ name, descriptionProps }) {
       this.valid = false
       this.closeModal()
     },
     closeModal () {
+      this.valid = true
       this.$emit('input', false)
     }
   }

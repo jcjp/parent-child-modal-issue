@@ -2,17 +2,17 @@
   <div>
     <ListComponent
       v-for="(d, index) in data"
-      :id="d.id"
       :key="index"
+      :id="d.id"
       :name="d.name"
       :description="d.description"
       @edit="editData"
     />
     <EditComponent
-      :id="selected.id"
       v-model="isOpenModal"
-      :name="selected.name"
-      :description="selected.description"
+      :id="selected.id"
+      :nameProps="selected.name"
+      :descriptionProps="selected.description"
     />
   </div>
 </template>
