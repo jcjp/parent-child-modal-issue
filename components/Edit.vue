@@ -11,7 +11,6 @@
           </h1>
         </v-card-text>
         <v-form
-          id="edit-category-modal-form"
           ref="form"
           v-model="valid"
         >
@@ -33,10 +32,10 @@
             required
           />
 
-          <v-card-actions id="edit-category-modal-actions">
+          <v-card-actions>
             <v-btn
               text
-              @click.prevent="closeModal"
+              @click.prevent="close"
             >
               Cancel
             </v-btn>
@@ -46,7 +45,7 @@
               text
               absolute
               right
-              @click.prevent="updateCategory({name, descriptionProps})"
+              @click.prevent="updateCategory({name, description})"
             >
               Edit category
             </v-btn>
@@ -89,11 +88,18 @@ export default {
     }
   },
   methods: {
-    updateCategory ({ name, descriptionProps }) {
+    updateCategory ({ name, description }) {
+      console.log(JSON.stringify({ name, description }, null, 2))
       this.valid = false
-      this.closeModal()
+      this.close()
     },
-    closeModal () {
+    close () {
+      console.log(this.originalName)
+      console.log(this.originalDescription)
+
+      this.name = this.originalName
+      this.description = this.originalDescription
+
       this.valid = true
       this.$emit('input', false)
     }

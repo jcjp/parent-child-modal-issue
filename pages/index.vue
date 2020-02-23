@@ -11,8 +11,8 @@
     <EditComponent
       v-model="isOpenModal"
       :id="selected.id"
-      :nameProps="selected.name"
-      :descriptionProps="selected.description"
+      :name-props="selected.name"
+      :description-props="selected.description"
     />
   </div>
 </template>
@@ -38,10 +38,10 @@ export default {
     }
   },
   async mounted () {
-    await this.getAllCategories()
+    await this.getAll()
   },
   methods: {
-    async getAllCategories () {
+    async getAll () {
       this.data = await new Promise((resolve) => {
         setTimeout(() => {
           resolve([
@@ -75,7 +75,7 @@ export default {
       })
     },
     editData ({ id, name, description }) {
-      this.selectedCategory = { name, id, description }
+      this.selected = { name, id, description }
       this.isOpenModal = true
     }
   }
